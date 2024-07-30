@@ -7,7 +7,9 @@ describe("Unit test: register user", () => {
   test("should be able to register user successfully", async () => {
     const userServices = container.resolve(user_services);
 
-    prismaMock.user.create.mockResolvedValue(completeUserMock);
+    const completeUser = await completeUserMock();
+
+    prismaMock.user.create.mockResolvedValue(completeUser);
     const data = await userServices.register(userRegisterBodyMock);
 
     expect(data).toStrictEqual(userMock);
@@ -16,7 +18,9 @@ describe("Unit test: register user", () => {
   test("register user should throw error when email is already registered", async () => {
     const userServices = container.resolve(user_services);
 
-    prismaMock.user.findFirst.mockResolvedValue(completeUserMock);
+    const completeUser = await completeUserMock();
+
+    prismaMock.user.findFirst.mockResolvedValue(completeUser);
     const register = async () => await userServices.register(userRegisterBodyMock);
 
     expect(register()).rejects.toThrow("This email is already registered");
