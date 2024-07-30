@@ -18,7 +18,7 @@ export class user_services {
     const existingUser = await prisma.user.findFirst({ where: { email: body.email } });
 
     if (existingUser) {
-      throw new app_error("This email is already registered", 403);
+      throw new app_error("This email is already registered.", 403);
     }
 
     const hashPassword = await bcrypt.hash(body.password, 10);

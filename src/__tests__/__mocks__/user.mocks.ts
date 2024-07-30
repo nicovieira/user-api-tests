@@ -17,14 +17,21 @@ export const completeUserMock = async () => {
     password: hashPassword,
   };
 };
+
 export const userRegisterBodyMock = {
   name: "John Doe",
   email: "johndoe@email.com",
   password: "fb7c849KD",
 };
+
 export const userLoginBodyMock = {
   email: "johndoe@email.com",
   password: "fb7c849KD",
+};
+
+export const userLoginBodyWrongPasswordMock = {
+  email: "johndoe@email.com",
+  password: "fb7c849K",
 };
 
 export const loginUserMock = async () => {
