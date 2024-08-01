@@ -42,3 +42,9 @@ export const loginUserMock = async () => {
 
   return { user, token };
 };
+
+export const invalidTokenMock = async () => {
+  const token = jwt.sign({}, "INVALID_SECRET");
+
+  return token;
+};
