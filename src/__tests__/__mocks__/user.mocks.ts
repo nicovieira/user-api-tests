@@ -10,6 +10,7 @@ export const userMock = {
 
 export const completeUserMock = async () => {
   const hashPassword = await bcrypt.hash("fb7c849KD", 10);
+
   return {
     id: "a2009ea6-5105-5ef5-9c21-39898f1f0d09",
     name: "John Doe",

@@ -7,7 +7,6 @@ import {
   tUserRegisterBody,
   tUserReturn,
   userReturnSchema,
-  userSchema,
 } from "../schemas/user.schemas";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
@@ -57,6 +56,6 @@ export class user_services {
   async getUser(userId: string): Promise<tUserReturn> {
     const user = await prisma.user.findFirst({ where: { id: userId } });
 
-    return userSchema.parse(user);
+    return userReturnSchema.parse(user);
   }
 }
