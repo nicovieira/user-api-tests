@@ -48,3 +48,9 @@ export const invalidTokenMock = async () => {
 
   return token;
 };
+
+export const invalidUserRegisterBodyMock = {
+  name: 123,
+  email: 123,
+  password: 123,
+};
