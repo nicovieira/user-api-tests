@@ -1,6 +1,5 @@
 import jwt from "jsonwebtoken";
 import { prisma } from "../../database/prisma";
-import bcrypt from "bcrypt";
 import { hashPassword } from "../utils/hashPassword";
 
 export const userMock = {
@@ -45,6 +44,11 @@ export const userLoginBodyMock = {
 export const userLoginBodyWrongPasswordMock = {
   email: "johndoe@email.com",
   password: "fb7c849K",
+};
+
+export const invalidUserLoginBodyMock = {
+  email: 123,
+  password: 123,
 };
 
 export const loginUserMock = async () => {

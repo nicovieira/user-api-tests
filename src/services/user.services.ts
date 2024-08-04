@@ -36,13 +36,13 @@ export class user_services {
     const user = await prisma.user.findFirst({ where: { email: body.email } });
 
     if (!user) {
-      throw new app_error("User not registered.");
+      throw new app_error("User not registered.", 404);
     }
 
     const comparePassword = await bcrypt.compare(body.password, user.password);
 
     if (!comparePassword) {
-      throw new app_error("E-mail and password doesn't match.");
+      throw new app_error("E-mail and password doesn't match.", 403);
     }
 
     const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET as string);
